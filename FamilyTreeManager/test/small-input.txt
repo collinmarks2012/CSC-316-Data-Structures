@@ -1,0 +1,26 @@
+		public static TreeNode find(Person dataToFind) {
+			TreeNode returnNode = null;
+	        if(tree != null) {
+	            returnNode = auxiliaryFind(tree, dataToFind);
+	        }
+	        return returnNode;
+		}
+
+		private static TreeNode auxiliaryFind(TreeNode node, Person dataToFind) {
+			TreeNode returnNode = null;
+	        int i = 0;
+
+	        if (node.getPerson().getName().equals(dataToFind.getName())) {
+	        	returnNode = node;
+	        }
+
+	        else if(node.hasChildren()) {
+	            i = 0;
+	            while(returnNode == null && i < node.getNumberOfChildren()) {
+	                returnNode = auxiliaryFind(node.getChildAt(i), dataToFind);
+	                i++;
+	            }
+	        }
+
+	        return returnNode;
+		}
